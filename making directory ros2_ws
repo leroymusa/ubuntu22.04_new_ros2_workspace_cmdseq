@@ -1,0 +1,6 @@
+leroy7@LAPTOP-DUG316QR:~$ mkdir -p ~/ros2_ws/src
+leroy7@LAPTOP-DUG316QR:~$ cd ~/ros2_ws/src
+leroy7@LAPTOP-DUG316QR:~/ros2_ws/src$ colcon build
+
+Summary: 0 packages finished [0.35s]
+leroy7@LAPTOP-DUG316QR:~/ros2_ws/src$
