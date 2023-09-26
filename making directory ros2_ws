@@ -3,4 +3,45 @@ leroy7@LAPTOP-DUG316QR:~$ cd ~/ros2_ws/src
 leroy7@LAPTOP-DUG316QR:~/ros2_ws/src$ colcon build
 
 Summary: 0 packages finished [0.35s]
-leroy7@LAPTOP-DUG316QR:~/ros2_ws/src$
+leroy7@LAPTOP-DUG316QR:~/ros2_ws/src$ ls
+build  install  log
+leroy7@LAPTOP-DUG316QR:~/ros2_ws/src$ git clone https://github.com/ros/ros_tutorials.git -b humble
+Cloning into 'ros_tutorials'...
+remote: Enumerating objects: 2964, done.
+remote: Counting objects: 100% (284/284), done.
+remote: Compressing objects: 100% (111/111), done.
+remote: Total 2964 (delta 176), reused 263 (delta 169), pack-reused 2680
+Receiving objects: 100% (2964/2964), 674.58 KiB | 3.15 MiB/s, done.
+Resolving deltas: 100% (1793/1793), done.
+leroy7@LAPTOP-DUG316QR:~/ros2_ws/src$ # cd if you're still in the ``src`` directory with the ``ros_tutorials`` clone
+cd ..
+rosdep install -i --from-path src --rosdistro humble -y
+#All required rosdeps installed successfully
+leroy7@LAPTOP-DUG316QR:~/ros2_ws$ colcon build
+[0.590s] WARNING:colcon.colcon_core.package_selection:Some selected packages are already built in one or more underlay workspaces:
+        'turtlesim' is in: /opt/ros/humble
+If a package in a merged underlay workspace is overridden and it installs headers, then all packages in the overlay must sort their include directories by workspace order. Failure to do so may result in build failures or undefined behavior at run time.
+If the overridden package is used by another package in any underlay, then the overriding package in the overlay must be API and ABI compatible or undefined behavior at run time may occur.
+
+If you understand the risks and want to override a package anyways, add the following to the command line:
+        --allow-overriding turtlesim
+
+This may be promoted to an error in a future release of colcon-override-check.
+Starting >>> turtlesim
+[Processing: turtlesim]
+[Processing: turtlesim]
+Finished <<< turtlesim [1min 17s]
+
+Summary: 1 package finished [1min 17s]
+leroy7@LAPTOP-DUG316QR:~/ros2_ws$ ls
+build  install  log  src
+leroy7@LAPTOP-DUG316QR:~/ros2_ws$ source /opt/ros/humble/setup.bash
+leroy7@LAPTOP-DUG316QR:~/ros2_ws$ cd ~/ros2_ws
+leroy7@LAPTOP-DUG316QR:~/ros2_ws$ source install/local_setup.bash
+leroy7@LAPTOP-DUG316QR:~/ros2_ws$ ros2 run turtlesim turtlesim_node
+[INFO] [1695742658.497778584] [turtlesim]: Starting turtlesim with node name /turtlesim
+[INFO] [1695742658.514585059] [turtlesim]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]
+leroy7@LAPTOP-DUG316QR:~/ros2_ws$ ros2 run turtlesim turtlesim_node
+[INFO] [1695742707.660860554] [turtlesim]: Starting turtlesim with node name /turtlesim
+[INFO] [1695742707.668536251] [turtlesim]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]
+
